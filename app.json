@@ -29,6 +29,7 @@
     },
     "plugins": [
       "expo-router",
+      "expo-localization",
       [
         "expo-splash-screen",
         {
@@ -36,6 +37,12 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/SpaceMono-Regular.ttf", "./assets/fonts/LibreBaskerville-Regular.ttf", "./assets/fonts/LibreBaskerville-Bold.ttf", "./assets/fonts/LibreBaskerville-Italic.ttf"]
         }
       ]
     ],

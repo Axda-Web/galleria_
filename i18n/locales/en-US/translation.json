@@ -1,0 +1,9 @@
+{
+  "screens": {
+    "home": {
+      "header": {
+        "start_slideshow": "START SLIDESHOW"
+      }
+    }
+  }
+}

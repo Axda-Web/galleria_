@@ -7,6 +7,11 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
+      fontFamily: {
+        "libre-baskerville": ["LibreBaskerville-Regular"],
+        "libre-baskerville-bold": ["LibreBaskerville-Bold"],
+        "libre-baskerville-italic": ["LibreBaskerville-Italic"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
