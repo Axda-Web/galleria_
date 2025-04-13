@@ -12,6 +12,7 @@ import { Platform } from "react-native";
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 import "~/i18n";
+import { PortalHost } from "@rn-primitives/portal";
 
 import { Header } from "~/components/header";
 
@@ -55,6 +56,7 @@ export default function RootLayout() {
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
       <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
       <Stack screenOptions={{ header: () => <Header /> }} />
+      <PortalHost />
     </ThemeProvider>
   );
 }

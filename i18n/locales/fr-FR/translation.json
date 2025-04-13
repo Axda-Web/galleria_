@@ -3,6 +3,14 @@
     "home": {
       "header": {
         "start_slideshow": "DÉMARRER LE SLIDESHOW"
+      },
+      "locale_selector": {
+        "title": "Sélectionner la langue",
+        "options": {
+          "en-US": "🇺🇸",
+          "es-ES": "🇪🇸",
+          "fr-FR": "🇫🇷"
+        }
       }
     }
   }

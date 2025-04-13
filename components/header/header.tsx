@@ -10,7 +10,7 @@ export function Header() {
     <SafeAreaView edges={["top"]} className="bg-background">
       <View className="flex-row items-center justify-between p-6 border-b border-border">
         <GalleriaLogo width={114} height={32} />
-        <Text className="text-xs tracking-widest text-gray-500 font-bold font-libre-baskerville-bold">
+        <Text className="text-xs tracking-widest text-gray-5w00 font-bold font-libre-baskerville-bold">
           {t("screens.home.header.start_slideshow")}
         </Text>
       </View>

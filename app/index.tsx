@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import { LocaleSelector } from "~/components/locale-selector";
 
 export default function Index() {
   return (
@@ -9,9 +10,10 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text className="text-green-500">
+      <Text className="text-red-500">
         Edit app/index.tsx to edit this screen.
       </Text>
+      <LocaleSelector />
     </View>
   );
 }
