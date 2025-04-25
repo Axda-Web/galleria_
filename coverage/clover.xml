@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1745562511375" clover="3.2.0">
+  <project timestamp="1745562511375" name="All files">
+    <metrics statements="22" coveredstatements="19" conditionals="12" coveredconditionals="3" methods="7" coveredmethods="6" elements="41" coveredelements="28" complexity="0" loc="22" ncloc="22" packages="5" files="8" classes="8"/>
+    <package name="components.galleria-logo">
+      <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="galleria-logo.tsx" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/components/galleria-logo/galleria-logo.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="16" count="2" type="stmt"/>
+      </file>
+      <file name="index.ts" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/components/galleria-logo/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="components.header">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="header.tsx" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/components/header/header.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.ui">
+      <metrics statements="11" coveredstatements="8" conditionals="5" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="button.tsx" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/components/ui/button.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+      </file>
+      <file name="text.tsx" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/components/ui/text.tsx">
+        <metrics statements="6" coveredstatements="3" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="constants">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="nav.ts" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/constants/nav.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="useColorScheme.ts" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/lib/useColorScheme.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+      <file name="utils.ts" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/lib/utils.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

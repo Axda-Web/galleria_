@@ -15,6 +15,7 @@ import "~/i18n";
 import { PortalHost } from "@rn-primitives/portal";
 
 import { Header } from "~/components/header";
+import { ThemeToggle } from "~/components/theme-toggle";
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -25,14 +26,11 @@ const DARK_THEME: Theme = {
   colors: NAV_THEME.dark,
 };
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from "expo-router";
+export { ErrorBoundary } from "expo-router";
 
 export default function RootLayout() {
   const hasMounted = useRef(false);
-  const { colorScheme, isDarkColorScheme } = useColorScheme();
+  const { isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
@@ -57,6 +55,7 @@ export default function RootLayout() {
       <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
       <Stack screenOptions={{ header: () => <Header /> }} />
       <PortalHost />
+      <ThemeToggle />
     </ThemeProvider>
   );
 }
