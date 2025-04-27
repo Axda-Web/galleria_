@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1745562511375" clover="3.2.0">
-  <project timestamp="1745562511375" name="All files">
+<coverage generated="1745652700564" clover="3.2.0">
+  <project timestamp="1745652700564" name="All files">
     <metrics statements="22" coveredstatements="19" conditionals="12" coveredconditionals="3" methods="7" coveredmethods="6" elements="41" coveredelements="28" complexity="0" loc="22" ncloc="22" packages="5" files="8" classes="8"/>
     <package name="components.galleria-logo">
       <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="galleria-logo.tsx" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/components/galleria-logo/galleria-logo.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
       </file>
       <file name="index.ts" path="/Users/axda/Desktop/portfolio/axda-studio-portfolio/projects/galleria/galleria_/components/galleria-logo/index.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

@@ -9,8 +9,11 @@ describe("GalleriaLogo", () => {
   };
 
   it("renders correctly", () => {
-    const { getByRole } = render(<GalleriaLogo {...defaultProps} />);
+    const { getByRole, getByTestId } = render(
+      <GalleriaLogo {...defaultProps} />
+    );
     const logo = getByRole("link");
     expect(logo).toBeDefined();
+    expect(getByTestId("galleria-logo")).toBeDefined();
   });
 });

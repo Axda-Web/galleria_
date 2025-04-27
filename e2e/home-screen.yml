@@ -1,0 +1,5 @@
+appId: "com.axdastudio.galleria.dev"
+---
+- launchApp
+- assertVisible: "START SLIDESHOW"
+- tapOn: "EN"

@@ -34,7 +34,7 @@ export function LocaleSelector() {
           i18n.changeLanguage(value?.value);
         }}
       >
-        <SelectTrigger className="w-fit">
+        <SelectTrigger>
           <SelectValue
             className="text-foreground text-sm native:text-lg"
             placeholder={t(
@@ -42,7 +42,7 @@ export function LocaleSelector() {
             )}
           />
         </SelectTrigger>
-        <SelectContent insets={contentInsets} className="w-fit">
+        <SelectContent insets={contentInsets}>
           {LOCALES.map((locale) => (
             <SelectItem
               key={locale}

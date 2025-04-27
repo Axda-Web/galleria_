@@ -7,9 +7,9 @@
       "locale_selector": {
         "title": "Select Language",
         "options": {
-          "en": "🇺🇸",
-          "es": "🇪🇸",
-          "fr": "🇫🇷"
+          "en": "EN",
+          "es": "ES",
+          "fr": "FR"
         }
       }
     }

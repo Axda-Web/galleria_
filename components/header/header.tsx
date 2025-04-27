@@ -19,7 +19,7 @@ export function Header() {
     <SafeAreaView edges={["top"]} className="bg-background" testID="header">
       <View className="flex-row items-center justify-between p-6 border-b border-border">
         <GalleriaLogo width={114} height={32} color={logoColor} />
-        <Button variant="ghost">
+        <Button variant="ghost" testID="start-slideshow-button">
           <Text className="text-xs tracking-widest text-gray-500 font-bold font-libre-baskerville-bold">
             {t("screens.home.header.start_slideshow")}
           </Text>
