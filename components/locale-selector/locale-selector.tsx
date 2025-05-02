@@ -55,3 +55,5 @@ export function LocaleSelector() {
     </SafeAreaView>
   );
 }
+
+// TODO: Find out why the portal overflow the safe area view on android
