@@ -16,6 +16,19 @@ import { PortalHost } from "@rn-primitives/portal";
 
 import { Header } from "~/components/header";
 import { ThemeToggle } from "~/components/theme-toggle";
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn: 'https://41dfd60118dfabcbad53a624ae4d861f@o4508969201369088.ingest.de.sentry.io/4509255167443024',
+
+  // Configure Session Replay
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1,
+  integrations: [Sentry.mobileReplayIntegration()],
+
+  // uncomment the line below to enable Spotlight (https://spotlightjs.com)
+  // spotlight: __DEV__,
+});
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -28,7 +41,7 @@ const DARK_THEME: Theme = {
 
 export { ErrorBoundary } from "expo-router";
 
-export default function RootLayout() {
+export default Sentry.wrap(function RootLayout() {
   const hasMounted = useRef(false);
   const { isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
@@ -58,7 +71,7 @@ export default function RootLayout() {
       <ThemeToggle />
     </ThemeProvider>
   );
-}
+});
 
 const useIsomorphicLayoutEffect =
   Platform.OS === "web" && typeof window === "undefined"

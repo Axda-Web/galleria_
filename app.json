@@ -50,6 +50,14 @@
             "./assets/fonts/LibreBaskerville-Italic.ttf"
           ]
         }
+      ],
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "galleria-mobile",
+          "organization": "axda-studio"
+        }
       ]
     ],
     "experiments": {
