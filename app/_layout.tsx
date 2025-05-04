@@ -15,7 +15,7 @@ import "~/i18n";
 import { PortalHost } from "@rn-primitives/portal";
 import * as Sentry from "@sentry/react-native";
 import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
-import migrations from "~/drizzle-db/migrations";
+import migrations from "~/drizzle-db/migrations/migrations";
 import { useDrizzleStudio } from "expo-drizzle-studio-plugin";
 
 import { Header } from "~/components/header";
