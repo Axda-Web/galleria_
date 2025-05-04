@@ -15,11 +15,15 @@ import "~/i18n";
 import { PortalHost } from "@rn-primitives/portal";
 import * as Sentry from "@sentry/react-native";
 import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
-import migrations from "~/drizzle-db/migrations";
+import migrations from "~/drizzle-db/migrations/migrations";
+import { useDrizzleStudio } from "expo-drizzle-studio-plugin";
 
 import { Header } from "~/components/header";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { db } from "~/drizzle-db";
+import * as SQLite from "expo-sqlite";
+
+const actualDb = SQLite.openDatabaseSync("db.db");
 
 Sentry.init({
   dsn: "https://41dfd60118dfabcbad53a624ae4d861f@o4508969201369088.ingest.de.sentry.io/4509255167443024",
@@ -49,6 +53,7 @@ export default Sentry.wrap(function RootLayout() {
   const { isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
   const { success, error } = useMigrations(db, migrations);
+  useDrizzleStudio(actualDb);
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {

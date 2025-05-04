@@ -6,7 +6,7 @@ export const paintingsTable = sqliteTable("paintings", {
   artist: text().notNull(),
   description: text().notNull(),
   year: int().notNull(),
-  image: text().notNull(),
+  imageUrl: text().notNull(),
   createdAt: text().notNull(),
   updatedAt: text().notNull(),
 });
