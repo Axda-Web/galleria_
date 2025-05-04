@@ -58,6 +58,9 @@
           "project": "galleria-mobile",
           "organization": "axda-studio"
         }
+      ],
+      [
+        "expo-sqlite"
       ]
     ],
     "experiments": {

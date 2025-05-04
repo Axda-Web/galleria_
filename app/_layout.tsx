@@ -8,18 +8,25 @@ import "~/global.css";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
-import { Platform } from "react-native";
+import { Platform, View, Text } from "react-native";
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 import "~/i18n";
 import { PortalHost } from "@rn-primitives/portal";
+import * as Sentry from "@sentry/react-native";
+import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
+import migrations from "~/drizzle-db/migrations";
+import { useDrizzleStudio } from "expo-drizzle-studio-plugin";
 
 import { Header } from "~/components/header";
 import { ThemeToggle } from "~/components/theme-toggle";
-import * as Sentry from '@sentry/react-native';
+import { db } from "~/drizzle-db";
+import * as SQLite from "expo-sqlite";
+
+const actualDb = SQLite.openDatabaseSync("db.db");
 
 Sentry.init({
-  dsn: 'https://41dfd60118dfabcbad53a624ae4d861f@o4508969201369088.ingest.de.sentry.io/4509255167443024',
+  dsn: "https://41dfd60118dfabcbad53a624ae4d861f@o4508969201369088.ingest.de.sentry.io/4509255167443024",
 
   // Configure Session Replay
   replaysSessionSampleRate: 0.1,
@@ -45,6 +52,8 @@ export default Sentry.wrap(function RootLayout() {
   const hasMounted = useRef(false);
   const { isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
+  const { success, error } = useMigrations(db, migrations);
+  useDrizzleStudio(actualDb);
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
@@ -61,6 +70,21 @@ export default Sentry.wrap(function RootLayout() {
 
   if (!isColorSchemeLoaded) {
     return null;
+  }
+
+  if (error) {
+    return (
+      <View>
+        <Text>Migration error: {error.message}</Text>
+      </View>
+    );
+  }
+  if (!success) {
+    return (
+      <View>
+        <Text>Migration is in progress...</Text>
+      </View>
+    );
   }
 
   return (
