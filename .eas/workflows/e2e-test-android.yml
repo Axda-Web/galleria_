@@ -2,7 +2,7 @@ name: e2e-test-android
 
 on:
   pull_request:
-    branches: ['*'] # Run the E2E test workflow on every pull request.
+    branches: ['master'] # Run the E2E test workflow on every pull request.
 jobs:
   build_android_for_e2e:
     type: build

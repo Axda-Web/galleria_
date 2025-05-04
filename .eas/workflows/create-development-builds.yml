@@ -3,7 +3,7 @@ name: Create development builds
 on:
   push:
     branches:
-      - master
+      - notready
 
 
     tags:
