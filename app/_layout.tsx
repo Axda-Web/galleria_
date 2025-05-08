@@ -22,6 +22,7 @@ import { Header } from "~/components/header";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { db } from "~/drizzle-db";
 import * as SQLite from "expo-sqlite";
+import { seed } from "~/drizzle-db/seed";
 
 const actualDb = SQLite.openDatabaseSync("db.db");
 
@@ -67,6 +68,10 @@ export default Sentry.wrap(function RootLayout() {
     setIsColorSchemeLoaded(true);
     hasMounted.current = true;
   }, []);
+
+  // useEffect(() => {
+  //   seed();
+  // }, []);
 
   if (!isColorSchemeLoaded) {
     return null;
