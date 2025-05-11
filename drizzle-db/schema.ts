@@ -9,12 +9,12 @@ export const paintingsTable = sqliteTable("paintings", {
   description: text().notNull(),
   year: int().notNull(),
   sourceUrl: text().notNull(),
-  createdAt: int("created_at", { mode: "timestamp" })
+  createdAt: text("created_at")
     .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-  updatedAt: int("updated_at", { mode: "timestamp" })
+    .default(sql`(datetime('now', 'localtime'))`),
+  updatedAt: text("updated_at")
     .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
+    .default(sql`(datetime('now', 'localtime'))`),
 });
 
 export const imagesTable = sqliteTable("images", {
@@ -24,17 +24,18 @@ export const imagesTable = sqliteTable("images", {
     enum: ["thumbnail", "heroSmall", "heroLarge", "gallery", "artist"],
   }).notNull(),
   url: text().notNull(),
-  createdAt: int("created_at", { mode: "timestamp" })
+  createdAt: text("created_at")
     .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-  updatedAt: int("updated_at", { mode: "timestamp" })
+    .default(sql`(datetime('now', 'localtime'))`),
+  updatedAt: text("updated_at")
     .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
+    .default(sql`(datetime('now', 'localtime'))`),
 });
 
 export const paintingsRelations = relations(paintingsTable, ({ many }) => ({
   images: many(imagesTable),
 }));
+
 export const imagesRelations = relations(imagesTable, ({ one }) => ({
   painting: one(paintingsTable, {
     fields: [imagesTable.paintingId],

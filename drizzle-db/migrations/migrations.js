@@ -6,6 +6,7 @@ import m0001 from './0001_ambitious_songbird.sql';
 import m0002 from './0002_dry_steel_serpent.sql';
 import m0003 from './0003_strange_slyde.sql';
 import m0004 from './0004_high_triathlon.sql';
+import m0005 from './0005_cuddly_ezekiel.sql';
 
   export default {
     journal,
@@ -14,7 +15,8 @@ import m0004 from './0004_high_triathlon.sql';
 m0001,
 m0002,
 m0003,
-m0004
+m0004,
+m0005
     }
   }
   

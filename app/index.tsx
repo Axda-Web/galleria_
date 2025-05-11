@@ -1,19 +1,19 @@
-import { Text, View } from "react-native";
-import { LocaleSelector } from "~/components/locale-selector";
+import { View } from "react-native";
+import { PaintingCard } from "~/components/painting-card";
+import { FlashList } from "@shopify/flash-list";
+import { useAllPaintings } from "~/hooks/queries/usePaintings";
 
 export default function Index() {
+  const { data: paintings } = useAllPaintings();
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text className="text-red-500">
-        Edit app/index.tsx to edit this screen.
-      </Text>
-      <LocaleSelector />
+    <View className="flex-1 p-6">
+      <FlashList
+        data={paintings}
+        renderItem={({ item }) => <PaintingCard painting={item} />}
+        keyExtractor={(item) => item.id.toString()}
+        estimatedItemSize={15}
+      />
     </View>
   );
 }
