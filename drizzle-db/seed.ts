@@ -128,7 +128,11 @@ const paintings = [
 
 // Images configuration - paths for each image type for a painting
 const createImagePaths = (paintingName: string) => {
-  const folderName = paintingName.toLowerCase().replace(/\s+/g, "-");
+  const folderName = paintingName
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
   return [
     { type: "thumbnail" as const, path: `/assets/${folderName}/thumbnail.jpg` },
     {

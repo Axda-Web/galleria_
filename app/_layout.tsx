@@ -25,7 +25,8 @@ import { ThemeToggle } from "~/components/theme-toggle";
 import { LocaleSelector } from "~/components/locale-selector";
 import { db } from "~/drizzle-db";
 import * as SQLite from "expo-sqlite";
-// import { seed } from "~/drizzle-db/seed";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { seed } from "~/drizzle-db/seed";
 
 const actualDb = SQLite.openDatabaseSync("db.db");
 
@@ -76,9 +77,9 @@ export default Sentry.wrap(function RootLayout() {
     hasMounted.current = true;
   }, []);
 
-  // useEffect(() => {
-  //   seed();
-  // }, []);
+  useEffect(() => {
+    seed();
+  }, []);
 
   if (!isColorSchemeLoaded) {
     return null;
@@ -103,10 +104,12 @@ export default Sentry.wrap(function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-        <Stack screenOptions={{ header: () => <Header /> }} />
-        <PortalHost />
-        <ThemeToggle />
-        <LocaleSelector />
+        <SafeAreaProvider>
+          <Stack screenOptions={{ header: () => <Header /> }} />
+          <ThemeToggle />
+          <LocaleSelector />
+          <PortalHost />
+        </SafeAreaProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

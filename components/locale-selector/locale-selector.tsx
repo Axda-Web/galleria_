@@ -42,7 +42,12 @@ export function LocaleSelector() {
             )}
           />
         </SelectTrigger>
-        <SelectContent insets={contentInsets}>
+        <SelectContent
+          insets={{
+            ...contentInsets,
+            bottom: Math.max(contentInsets.bottom, 16),
+          }}
+        >
           {LOCALES.map((locale) => (
             <SelectItem
               key={locale}
