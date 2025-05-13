@@ -6,6 +6,7 @@ import { Check } from "~/lib/icons/Check";
 import { ChevronDown } from "~/lib/icons/ChevronDown";
 import { ChevronUp } from "~/lib/icons/ChevronUp";
 import { cn } from "~/lib/utils";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type Option = SelectPrimitive.Option;
 

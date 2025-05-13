@@ -14,15 +14,14 @@ export function PaintingCard({ painting }: PaintingCardProps) {
   const image = useImage(assetUri);
 
   if (image === null) {
-    return <Skeleton className="aspect-square" />;
+    return <Skeleton className="aspect-square mb-6 w-full" />;
   }
 
   const imageAspectRatio = image?.width / image?.height;
 
   return (
-    <Card className="w-full mb-6 relative">
+    <Card className="w-full mb-6 relative border-none">
       <ExpoImage
-        onError={(err) => console.log("❌ image error: ", err)}
         source={image}
         style={{
           aspectRatio: imageAspectRatio,

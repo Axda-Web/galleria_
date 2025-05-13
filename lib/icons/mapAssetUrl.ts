@@ -15,11 +15,11 @@ export const mapAssetUrl = (url: string) => {
     "/assets/arnolfini-portrait/artist.jpg": require("~/assets/arnolfini-portrait/artist.jpg"),
 
     // Girl with Pearl Earring
-    "/assets/girl-with-pearl-earring/thumbnail.jpg": require("~/assets/girl-with-pearl-earring/thumbnail.jpg"),
-    "/assets/girl-with-pearl-earring/hero-small.jpg": require("~/assets/girl-with-pearl-earring/hero-small.jpg"),
-    "/assets/girl-with-pearl-earring/hero-large.jpg": require("~/assets/girl-with-pearl-earring/hero-large.jpg"),
-    "/assets/girl-with-pearl-earring/gallery.jpg": require("~/assets/girl-with-pearl-earring/gallery.jpg"),
-    "/assets/girl-with-pearl-earring/artist.jpg": require("~/assets/girl-with-pearl-earring/artist.jpg"),
+    "/assets/girl-with-a-pearl-earring/thumbnail.jpg": require("~/assets/girl-with-a-pearl-earring/thumbnail.jpg"),
+    "/assets/girl-with-a-pearl-earring/hero-small.jpg": require("~/assets/girl-with-a-pearl-earring/hero-small.jpg"),
+    "/assets/girl-with-a-pearl-earring/hero-large.jpg": require("~/assets/girl-with-a-pearl-earring/hero-large.jpg"),
+    "/assets/girl-with-a-pearl-earring/gallery.jpg": require("~/assets/girl-with-a-pearl-earring/gallery.jpg"),
+    "/assets/girl-with-a-pearl-earring/artist.jpg": require("~/assets/girl-with-a-pearl-earring/artist.jpg"),
 
     // Guernica
     "/assets/guernica/thumbnail.jpg": require("~/assets/guernica/thumbnail.jpg"),
