@@ -1,6 +1,7 @@
 // drizzle-db/seed.ts
 import { db } from "./index";
 import { paintingsTable, imagesTable } from "./schema";
+import { generatePaintingSlug } from "~/lib/generatePaintingSlug";
 
 const paintings = [
   {
@@ -128,11 +129,8 @@ const paintings = [
 
 // Images configuration - paths for each image type for a painting
 const createImagePaths = (paintingName: string) => {
-  const folderName = paintingName
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+  const folderName = generatePaintingSlug(paintingName);
+
   return [
     { type: "thumbnail" as const, path: `/assets/${folderName}/thumbnail.jpg` },
     {

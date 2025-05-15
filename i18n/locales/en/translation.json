@@ -2,7 +2,8 @@
   "screens": {
     "home": {
       "header": {
-        "start_slideshow": "START SLIDESHOW"
+        "start_slideshow": "START SLIDESHOW",
+        "stop_slideshow": "STOP SLIDESHOW"
       },
       "locale_selector": {
         "title": "Select Language",
