@@ -26,7 +26,7 @@ import { LocaleSelector } from "~/components/locale-selector";
 import { db } from "~/drizzle-db";
 import * as SQLite from "expo-sqlite";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { seed } from "~/drizzle-db/seed";
+// import { seed } from "~/drizzle-db/seed";
 
 const actualDb = SQLite.openDatabaseSync("db.db");
 
@@ -77,9 +77,9 @@ export default Sentry.wrap(function RootLayout() {
     hasMounted.current = true;
   }, []);
 
-  useEffect(() => {
-    seed();
-  }, []);
+  // useEffect(() => {
+  //   seed();
+  // }, []);
 
   if (!isColorSchemeLoaded) {
     return null;
