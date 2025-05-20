@@ -43,3 +43,6 @@ app-example
 stories/
 
 .env.local
+
+# jest
+coverage/

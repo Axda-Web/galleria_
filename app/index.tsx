@@ -1,19 +1,47 @@
-import { Text, View } from "react-native";
-import { LocaleSelector } from "~/components/locale-selector";
+import { View, Text } from "react-native";
+import { FlashList } from "@shopify/flash-list";
+import { useAllPaintings } from "~/hooks/queries/usePaintings";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Skeleton } from "~/components/ui/skeleton";
+
+import { PaintingCard } from "~/components/painting-card";
 
 export default function Index() {
+  const { data: paintings, isLoading, isError } = useAllPaintings();
+  const insets = useSafeAreaInsets();
+
+  if (isLoading) {
+    return (
+      <View style={{ paddingBottom: insets.bottom }} className="flex-1 p-6">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <Skeleton key={index} className="h-80 w-full mb-6" />
+        ))}
+      </View>
+    );
+  }
+
+  if (isError) {
+    return (
+      <View style={{ paddingBottom: insets.bottom }} className="flex-1 p-6">
+        <Text>❌ Error</Text>
+      </View>
+    );
+  }
+
   return (
     <View
       style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        paddingBottom: insets.bottom,
       }}
+      className="flex-1 p-6"
     >
-      <Text className="text-red-500">
-        Edit app/index.tsx to edit this screen.
-      </Text>
-      <LocaleSelector />
+      <FlashList
+        data={paintings}
+        renderItem={({ item }) => <PaintingCard painting={item} />}
+        keyExtractor={(item) => item.id.toString()}
+        estimatedItemSize={15}
+        ListEmptyComponent={<Text>No paintings found...</Text>}
+      />
     </View>
   );
 }

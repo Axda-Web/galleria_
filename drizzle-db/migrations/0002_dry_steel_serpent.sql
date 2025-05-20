@@ -1,0 +1,1 @@
+ALTER TABLE `paintings` ADD `sourceUrl` text NOT NULL;

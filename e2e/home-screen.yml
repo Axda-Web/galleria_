@@ -3,4 +3,7 @@ appId: "com.axdastudio.galleria.dev"
 - launchApp
 - assertVisible: "START SLIDESHOW"
 - tapOn: "EN"
+- assertVisible: "Starry Night Vincent Van Gogh"
+- tapOn: "Starry Night Vincent Van Gogh"
+- assertVisible: "starry-night"
 # TODO: Understand why I can't target the locales select items

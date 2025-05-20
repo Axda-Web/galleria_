@@ -7,7 +7,7 @@ import {
 import "~/global.css";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useRef, useState, useEffect, useLayoutEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect, Suspense } from "react";
 import { Platform, View, Text } from "react-native";
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
@@ -15,13 +15,18 @@ import "~/i18n";
 import { PortalHost } from "@rn-primitives/portal";
 import * as Sentry from "@sentry/react-native";
 import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
-import migrations from "~/drizzle-db/migrations";
+import migrations from "~/drizzle-db/migrations/migrations";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useDrizzleStudio } from "expo-drizzle-studio-plugin";
+import { useReactQueryDevTools } from "@dev-plugins/react-query";
 
 import { Header } from "~/components/header";
 import { ThemeToggle } from "~/components/theme-toggle";
+import { LocaleSelector } from "~/components/locale-selector";
 import { db } from "~/drizzle-db";
 import * as SQLite from "expo-sqlite";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+// import { seed } from "~/drizzle-db/seed";
 
 const actualDb = SQLite.openDatabaseSync("db.db");
 
@@ -48,12 +53,16 @@ const DARK_THEME: Theme = {
 
 export { ErrorBoundary } from "expo-router";
 
+const queryClient = new QueryClient();
+
 export default Sentry.wrap(function RootLayout() {
   const hasMounted = useRef(false);
   const { isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
   const { success, error } = useMigrations(db, migrations);
+
   useDrizzleStudio(actualDb);
+  useReactQueryDevTools(queryClient);
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
@@ -67,6 +76,10 @@ export default Sentry.wrap(function RootLayout() {
     setIsColorSchemeLoaded(true);
     hasMounted.current = true;
   }, []);
+
+  // useEffect(() => {
+  //   seed();
+  // }, []);
 
   if (!isColorSchemeLoaded) {
     return null;
@@ -88,12 +101,17 @@ export default Sentry.wrap(function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-      <Stack screenOptions={{ header: () => <Header /> }} />
-      <PortalHost />
-      <ThemeToggle />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+        <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+        <SafeAreaProvider>
+          <Stack screenOptions={{ header: () => <Header /> }} />
+          <ThemeToggle />
+          <LocaleSelector />
+          <PortalHost />
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 });
 
