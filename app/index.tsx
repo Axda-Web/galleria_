@@ -1,8 +1,10 @@
 import { View, Text } from "react-native";
-import { PaintingCard } from "~/components/painting-card";
 import { FlashList } from "@shopify/flash-list";
 import { useAllPaintings } from "~/hooks/queries/usePaintings";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Skeleton } from "~/components/ui/skeleton";
+
+import { PaintingCard } from "~/components/painting-card";
 
 export default function Index() {
   const { data: paintings, isLoading, isError } = useAllPaintings();
@@ -11,7 +13,9 @@ export default function Index() {
   if (isLoading) {
     return (
       <View style={{ paddingBottom: insets.bottom }} className="flex-1 p-6">
-        <Text>⏳ Loading...</Text>
+        {Array.from({ length: 10 }).map((_, index) => (
+          <Skeleton key={index} className="h-80 w-full mb-6" />
+        ))}
       </View>
     );
   }

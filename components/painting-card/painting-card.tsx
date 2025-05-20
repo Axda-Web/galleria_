@@ -24,7 +24,9 @@ export function PaintingCard({ painting }: PaintingCardProps) {
   return (
     <Link
       testID="painting-card"
-      href={`/painting/${generatePaintingSlug(painting.name)}`}
+      href={`/painting/${generatePaintingSlug(painting.name)}?id=${
+        painting.id
+      }`}
       className="mb-6"
     >
       <Card className="relative w-full">
@@ -37,10 +39,10 @@ export function PaintingCard({ painting }: PaintingCardProps) {
         />
         <View className="absolute inset-0 w-full h-full bg-black/50" />
         <View className="absolute bottom-0 left-0 p-8">
-          <CardTitle className="text-white text-2xl font-bold">
+          <CardTitle className="text-white text-3xl font-bold">
             {painting.name}
           </CardTitle>
-          <CardDescription className="text-sm text-white/50">
+          <CardDescription className="text-base text-white/50">
             {painting.artist}
           </CardDescription>
         </View>
