@@ -1,4 +1,5 @@
 // drizzle-db/seed.ts
+import { sql } from "drizzle-orm";
 import { db } from "./index";
 import { paintingsTable, imagesTable } from "./schema";
 import { generatePaintingSlug } from "~/lib/generatePaintingSlug";
@@ -154,6 +155,7 @@ export async function seed() {
     console.log("Cleaning existing data...");
     await db.delete(imagesTable);
     await db.delete(paintingsTable);
+    await db.run(sql`DELETE FROM sqlite_sequence WHERE name = 'paintings'`);
 
     // Insert paintings
     console.log("Inserting paintings...");

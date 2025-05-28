@@ -13,6 +13,14 @@
           "fr": "FR"
         }
       }
+    },
+    "painting": {
+      "lightbox": {
+        "open_cta": "VOIR L'IMAGE",
+        "close_cta": "FERMER"
+      },
+      "lightbox_cta": "VOIR L'IMAGE",
+      "source_link": "ALLER A LA SOURCE"
     }
   }
 }

@@ -7,7 +7,7 @@ on:
 
 
     tags:
-      - dev
+      - notready
 
 jobs:
   android_development_build:
