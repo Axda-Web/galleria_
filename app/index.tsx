@@ -1,4 +1,5 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import { Text } from "~/components/ui/text";
 import { FlashList } from "@shopify/flash-list";
 import { useAllPaintings } from "~/hooks/queries/usePaintings";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -33,7 +34,7 @@ export default function Index() {
       style={{
         paddingBottom: insets.bottom,
       }}
-      className="flex-1 p-6"
+      className="flex-1 p-4"
     >
       <FlashList
         data={paintings}

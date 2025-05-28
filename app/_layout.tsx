@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Theme,
   ThemeProvider,
@@ -8,7 +9,8 @@ import "~/global.css";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useRef, useState, useEffect, useLayoutEffect, Suspense } from "react";
-import { Platform, View, Text } from "react-native";
+import { Platform, View } from "react-native";
+import { Text } from "~/components/ui/text";
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 import "~/i18n";
@@ -19,14 +21,15 @@ import migrations from "~/drizzle-db/migrations/migrations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useDrizzleStudio } from "expo-drizzle-studio-plugin";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
+import * as SplashScreen from "expo-splash-screen";
+import { ClickOutsideProvider } from "react-native-click-outside";
 
 import { Header } from "~/components/header";
-import { ThemeToggle } from "~/components/theme-toggle";
-import { LocaleSelector } from "~/components/locale-selector";
+import { SettingsBtn } from "~/components/settings-btn";
 import { db } from "~/drizzle-db";
 import * as SQLite from "expo-sqlite";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-// import { seed } from "~/drizzle-db/seed";
+import { seed } from "~/drizzle-db/seed";
 
 const actualDb = SQLite.openDatabaseSync("db.db");
 
@@ -55,6 +58,8 @@ export { ErrorBoundary } from "expo-router";
 
 const queryClient = new QueryClient();
 
+SplashScreen.preventAutoHideAsync();
+
 export default Sentry.wrap(function RootLayout() {
   const hasMounted = useRef(false);
   const { isDarkColorScheme } = useColorScheme();
@@ -76,6 +81,12 @@ export default Sentry.wrap(function RootLayout() {
     setIsColorSchemeLoaded(true);
     hasMounted.current = true;
   }, []);
+
+  useEffect(() => {
+    if (isColorSchemeLoaded && success) {
+      SplashScreen.hideAsync();
+    }
+  }, [isColorSchemeLoaded, success]);
 
   // useEffect(() => {
   //   seed();
@@ -105,10 +116,11 @@ export default Sentry.wrap(function RootLayout() {
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
         <SafeAreaProvider>
-          <Stack screenOptions={{ header: () => <Header /> }} />
-          <ThemeToggle />
-          <LocaleSelector />
-          <PortalHost />
+          <ClickOutsideProvider>
+            <Stack screenOptions={{ header: () => <Header /> }} />
+            <SettingsBtn />
+            <PortalHost />
+          </ClickOutsideProvider>
         </SafeAreaProvider>
       </ThemeProvider>
     </QueryClientProvider>

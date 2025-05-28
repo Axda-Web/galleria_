@@ -1,47 +1,40 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GalleriaLogo } from "~/components/galleria-logo";
-import { useTranslation } from "react-i18next";
 import { useColorScheme } from "~/lib/useColorScheme";
-import { useEffect, useState } from "react";
-import { Button } from "~/components/ui/button";
-import { useRouter, usePathname } from "expo-router";
+import { usePathname } from "expo-router";
 import { NAV } from "~/constants/nav";
+import { LayoutPanelLeft } from "~/lib/icons/LayoutPanelLeft";
+import { GalleryHorizontalEnd } from "~/lib/icons/GalleryHorizontalEnd";
+import { Link } from "expo-router";
 
 export function Header() {
-  const { t } = useTranslation();
   const { isDarkColorScheme } = useColorScheme();
-  const [logoColor, setLogoColor] = useState("black");
-  const router = useRouter();
   const pathname = usePathname();
 
-  useEffect(() => {
-    setLogoColor(isDarkColorScheme ? "white" : "black");
-  }, [isDarkColorScheme]);
-
-  const handlePress = () => {
-    if (pathname !== NAV.HOME) {
-      router.navigate("/");
-    } else {
-      router.navigate(`/painting/starry-night`);
-    }
-  };
+  const linkPath = pathname !== NAV.HOME ? "/" : "/painting/starry-night?id=1";
 
   return (
     <SafeAreaView edges={["top"]} className="bg-background" testID="header">
       <View className="flex-row items-center justify-between p-6 border-b border-border">
-        <GalleriaLogo width={114} height={32} color={logoColor} />
-        <Button
-          variant="ghost"
-          testID="start-slideshow-button"
-          onPress={handlePress}
-        >
-          <Text className="text-xs tracking-widest text-gray-500 font-bold font-libre-baskerville-bold">
-            {pathname !== NAV.HOME
-              ? t("screens.home.header.stop_slideshow")
-              : t("screens.home.header.start_slideshow")}
-          </Text>
-        </Button>
+        <GalleriaLogo
+          width={114}
+          height={32}
+          color={isDarkColorScheme ? "white" : "black"}
+        />
+        <Link href={linkPath}>
+          {pathname !== NAV.HOME ? (
+            <LayoutPanelLeft
+              color={isDarkColorScheme ? "white" : "black"}
+              size={24}
+            />
+          ) : (
+            <GalleryHorizontalEnd
+              color={isDarkColorScheme ? "white" : "black"}
+              size={24}
+            />
+          )}
+        </Link>
       </View>
     </SafeAreaView>
   );

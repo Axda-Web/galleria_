@@ -8,7 +8,10 @@ type LocalImageProps = {
 
 export function LocalImage({ uri, className }: LocalImageProps) {
   const imageData = useImage(uri);
-  const imageAspectRatio = imageData?.width! / imageData?.height!;
+  const imageAspectRatio =
+    imageData?.width && imageData?.height
+      ? imageData.width / imageData.height
+      : 1;
 
   return (
     <View className={className}>

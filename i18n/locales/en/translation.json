@@ -15,6 +15,11 @@
       }
     },
     "painting": {
+      "lightbox": {
+        "open_cta": "VIEW IMAGE",
+        "close_cta": "CLOSE"
+      },
+      "lightbox_cta": "VIEW IMAGE",
       "source_link": "GO TO SOURCE"
     }
   }
